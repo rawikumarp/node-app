@@ -25,3 +25,14 @@ steps:
     targetPath: '$(Pipeline.workspace)'
     ArtifactName: 'node-app-01'
     publishLocation: 'pipeline'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'Node-app'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'Node-app'
+    command: 'push'
